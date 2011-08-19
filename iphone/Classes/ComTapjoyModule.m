@@ -10,6 +10,7 @@
 #import "TiUtils.h"
 
 @implementation ComTapjoyModule
+@synthesize secret;
 
 #pragma mark Internal
 
@@ -92,7 +93,7 @@
 	ENSURE_SINGLE_ARG(appId,NSString);
 	@try 
 	{
-		[TapjoyConnect requestTapjoyConnectWithAppId:appId];
+    [TapjoyConnect requestTapjoyConnect:appId secretKey:self.secret];
 	}
 	@catch (NSException * e) 
 	{

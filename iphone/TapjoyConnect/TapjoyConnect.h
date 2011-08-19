@@ -1,73 +1,70 @@
+//Copyright (C) 2011 by Tapjoy Inc.
 //
-//  TapjoyConnect.h
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
 //
-//  Created by Tapjoy.
-//  Copyright 2010 Tapjoy.com All rights reserved.
+//The above copyright notice and this permission notice shall be included in
+//all copies or substantial portions of the Software.
+//
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//THE SOFTWARE.
 
 
-/*! \mainpage Tapjoy Connect User Guide
+/*! \mainpage Tapjoy iOS SDK
  *
- *
- * \section intro_sec Introduction
- * By following this guide, integrating the Tapjoy Connect SDK into your application can easily be done in a few minutes.
- *
- *
- * \n
- * \section integration_sec SDK Integration
- * After downloading and unzipping the Tapjoy Connect SDK, you should see the following folders and files:
- *
- * \image html file_view.png fig. 1
- *
- * The EasyApp folder contains a sample project that demonstrates the Tapjoy Connect integration. You’ll be performing the following steps in your own application.
- *
- *
- * To add the files to your project, right click the project icon in your project explorer in Xcode, then select Add -> Existing Files.. -> select TapjoyConnect Folder -> Add. A dialogue will appear. Make sure your dialogue looks like the following:
- *
- * \image html xcode_prompt.png fig. 2
- *
- * Next, you will need to get your credentials for you application. In order for Tapjoy to work, you need to include the appId, appPassword, and appVersion. You can find this data by logging in to your account at http://www.tapjoy.com/ and clicking Partner Home at the top of the page.  Find your application in the list (or click Add an Application if it isn't there).  Click on the application icon and find the Integrate tab in order to retrieve this information:
- *
- * \image html app_dashboard.png fig. 3
- *
- * Now that you have the required info, go back to Xcode and add the following line of code to the applicationDidFinishLaunching method in your application’s delegate class file:
- * \n \c [[TapjoyConnect requestTapjoyConnectWithAppId:@"appID" WithPassword:@"appPassword " WithVersion:@"appVersion"] connect];
- *
- * For this example, it will look like the following in Xcode:
- *
- * \image html connect_code.png fig. 4
- *
- * \n
- * Congratulations! You are successfully connected with Tapjoy Connect.
- * In 2-3 hours you should see at least 1 new user in your http://tapjoy.com/ dashboard.  You will also see a success message in your Console.
- * Make sure to email support@tapjoy.com as soon as this version of your app is live in the app store, so that your account can be activated.
- *
+ * The Tapjoy iOS SDK.
  */
-#import <UIKit/UIKit.h>
 
 
-#define TJC_CONNECT_SUCCESS					@"TJC_Connect_Success"
-#define TJC_CONNECT_FAILED					@"TJC_Connect_Failed"
+#import <Foundation/Foundation.h>
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
+#endif
 
-#define TJC_TAP_POINTS_RESPONSE_NOTIFICATION	@"TJC_TAP_POINTS_RESPONSE_NOTIFICATION"
-#define TJC_FEATURED_APP_RESPONSE_NOTIFICATION	@"TJC_FEATURED_APP_RESPONSE_NOTIFICATION"
 
-#define TJC_AVAILABLE_ITEMS_RESPONSE_NOTIFICATION @"TJC_AVAILABLE_ITEMS_RESPONSE_NOTIFICATION"
-#define TJC_AVAILABLE_ITEMS_RESPONSE_NOTIFICATION_ERROR @"TJC_AVAILABLE_ITEMS_RESPONSE_NOTIFICATION_ERROR"
-
-#define TJC_SERVICE_URL						@"https://ws.tapjoyads.com/"
+#define TJC_SERVICE_URL							@"https://ws.tapjoyads.com/"
 #define TJC_SERVICE_URL_ALTERNATE			@"https://ws1.tapjoyads.com/"
+#define TJC_TAPJOY_HOST_NAME					@"ws.tapjoyads.com"
+#define TJC_TAPJOY_ALT_HOST_NAME				@"ws1.tapjoyads.com"
+#define TJC_LINKSHARE_HOST_NAME				@"click.linksynergy.com"
 
-#define TJC_DEVICE_TAG_NAME					@"udid"			/*!< The unique device identifier. */
-#define TJC_DEVICE_NAME						@"device_name"	/*!< This is the specific device name ("iPhone1,1", "iPod1,1"...) */
-#define TJC_DEVICE_TYPE_NAME				@"device_type"	/*!< The model name of the device. This is less descriptive than the device name. */
-#define TJC_DEVICE_OS_VERSION_NAME			@"os_version"	/*!< The device system version. */
-#define TJC_DEVICE_COUNTRY_CODE				@"country_code"	/*!< The country code is retrieved from the locale object, from user data (not device). */
-#define TJC_DEVICE_LANGUAGE					@"language_code"/*!< The language is retrieved from the locale object, from user data (not device). */
-#define TJC_DEVICE_LAD						@"lad"			/*!< Little Alien Dude. */
-#define TJC_APP_ID_NAME						@"app_id"		/*!< The application id is set by the developer, and is a unique id provided by Tapjoy. */
-#define TJC_APP_VERSION_NAME				@"app_version"	/*!< The application version is retrieved from the application plist file, from the bundle version. */
-#define TJC_CONNECT_LIBRARY_VERSION_NAME	@"library_version"	/*!< The library version is the SDK version number. */
-#define TJC_LIBRARY_VERSION_NUMBER			@"7.3.0"		/*!< The SDK version number. */
+#define TJC_UDID									@"udid"					/*!< The unique device identifier. */
+#define TJC_DEVICE_NAME							@"device_name"			/*!< This is the specific device name ("iPhone1,1", "iPod1,1"...) */
+#define TJC_DEVICE_TYPE_NAME					@"device_type"			/*!< The model name of the device. This is less descriptive than the device name. */
+#define TJC_DEVICE_OS_VERSION_NAME			@"os_version"			/*!< The device system version. */
+#define TJC_DEVICE_COUNTRY_CODE				@"country_code"		/*!< The country code is retrieved from the locale object, from user data (not device). */
+#define TJC_DEVICE_LANGUAGE					@"language_code"		/*!< The language is retrieved from the locale object, from user data (not device). */
+#define TJC_DEVICE_LAD							@"lad"					/*!< Little Alien Dude. */
+#define TJC_APP_ID_NAME							@"app_id"				/*!< The application id is set by the developer, and is a unique id provided by Tapjoy. */
+#define TJC_APP_VERSION_NAME					@"app_version"			/*!< The application version is retrieved from the application plist file, from the bundle version. */
+#define TJC_CONNECT_LIBRARY_VERSION_NAME	@"library_version"	/*!< The library version is the SDK version number. */	
+#define TJC_LIBRARY_VERSION_NUMBER			@"8.0.3"					/*!< The SDK version number. */
+#define TJC_VERIFIER								@"verifier"				/*!< A hashed value that is verified on the server to confirm a valid connect. */
+#define TJC_TIMESTAMP							@"timestamp"			/*!< The time in seconds when a connect call is made. */
+#define TJC_GUID									@"guid"					/*!< Used as part of the verifier. */
+#define TJC_CARRIER_NAME						@"carrier_name"		/*!< The name of the user’s home cellular service provider. */
+#define TJC_ALLOWS_VOIP							@"allows_voip"			/*!< Indicates if the carrier allows VoIP calls to be made on its network. */
+#define TJC_CARRIER_COUNTRY_CODE				@"carrier_country_code"	/*!< The ISO country code for the user’s cellular service provider. */
+#define TJC_MOBILE_COUNTRY_CODE				@"mobile_country_code"	/*!< The mobile country code (MCC) for the user’s cellular service provider. */
+#define TJC_MOBILE_NETWORK_CODE				@"mobile_network_code"	/*!< The mobile network code (MNC) for the user’s cellular service provider. */
+#define TJC_PLATFORM								@"platform"				/*!< The name of the platform. */
+#define TJC_PLATFORM_IOS						@"iOS"
+// NOTE: This doesn't actually affect currency earned, just the value displayed on the offer wall.
+#define TJC_URL_PARAM_CURRENCY_MULTIPLIER	@"display_multiplier"	/*!< Currency multiplier value. */
+
+
+#define TJC_CONNECT_API							@"connect"						/*!< API for Tapjoy connect. */
+#define TJC_SET_USER_ID_API					@"set_publisher_user_id"	/*!< API for setting publisher user id. */
 
 
 /*!	\interface TapjoyConnect
@@ -75,32 +72,46 @@
  *
  */
 @interface TapjoyConnect :  NSObject
-#if __IPHONE_4_0
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
 <NSXMLParserDelegate>
 #endif
 {
 @private
-	NSString *appId_;				/*!< The application ID unique to this app. */
-	NSData *data_;					/*!< Holds data for any data that comes back from a URL request. */
-	NSURLConnection *connection_;	/*!< Used to provide support to perform the loading of a URL request. Delegate methods are defined to handle when a response is recieve with associated data. This is used for asynchronous requests only. */
-	NSTimeInterval timeStamp_;		/*!< Contains the current time when a URL request is made. This value is used to help generate a unique md5sum key. */
-	NSString *currentXMLElement_;	/*!< Contains @"Success when a connection is successfully made, nil otherwise. */
-	int connectAttempts_;			/*!< The connect attempts is used to determine whether the alternate URL will be used. */
-	BOOL isInitialConnect_;			/*!< Used to keep track of an initial connect call to prevent multiple repeated calls. */
+	NSString *appID_;						/*!< The application ID unique to this app. */
+	NSString *secretKey_;				/*!< The Tapjoy secret key for this applicaiton. */
+	NSString *userID_;					/*!< The user ID, used to display ads. This is the UDID by default. */
+	float currencyMultiplier_;			/*!< The currency multiplier value, used to adjust currency earned. */
+	NSData *data_;							/*!< Holds data for any data that comes back from a URL request. */
+	NSURLConnection *connection_;		/*!< Used to provide support to perform the loading of a URL request. Delegate methods are defined to handle when a response is recieve with associated data. This is used for asynchronous requests only. */
+	NSString *currentXMLElement_;		/*!< Contains @"Success when a connection is successfully made, nil otherwise. */
+	int connectAttempts_;				/*!< The connect attempts is used to determine whether the alternate URL will be used. */
+	BOOL isInitialConnect_;				/*!< Used to keep track of an initial connect call to prevent multiple repeated calls. */
 }
 
-@property (nonatomic,readonly) NSString* appId;
+@property (nonatomic,copy) NSString* appID;
+@property (nonatomic,copy) NSString* secretKey;
+@property (nonatomic,copy) NSString* userID;
 @property (nonatomic) BOOL isInitialConnect;
 
 
-/*!	\fn requestTapjoyConnectWithAppId:(NSString*)appId
+/*!	\fn requestTapjoyConnect:secretKey:(NSString *appID, NSString *secretKey)
  *	\brief This method is called to initialize the TapjoyConnect system.
  *
  * This method should be called upon app delegate initialization in the applicationDidFinishLaunching method.
- *	\param appId The application ID.
+ *	\param appID The application ID. Retrieved from the app dashboard in your Tapjoy account.
+ *  \param secretKey The application secret key. Retrieved from the app dashboard in your Tapjoy account.
  *	\return The globally accessible #TapjoyConnect object.
  */
-+ (TapjoyConnect*) requestTapjoyConnectWithAppId:(NSString*)appId;
++ (TapjoyConnect*)requestTapjoyConnect:(NSString*)appID secretKey:(NSString*)secretKey;
+
+/*!	\fn actionComplete:(NSString*)actionID
+ *	\brief This is called when an action is completed.
+ *
+ * Actions are much like connects, except that this method is only called when a user completes an in-game action.
+ *	\param actionID The action ID.
+ *	\return The globally accessible #TapjoyConnect object.
+ */
++ (TapjoyConnect*)actionComplete:(NSString*)actionID;
 
 /*!	\fn sharedTapjoyConnect
  *	\brief Retrieves the globally accessible #TapjoyConnect singleton object.
@@ -108,62 +119,150 @@
  *	\param n/a
  *	\return The globally accessible #TapjoyConnect singleton object.
  */
-+ (TapjoyConnect*) sharedTapjoyConnect;
++ (TapjoyConnect*)sharedTapjoyConnect;
 
-/*!
+/*!	\fn deviceNotificationReceived
+ *	\brief This is called whenever the application returns to the foreground.
+ *
+ *	\param n/a
+ *	\return n/a
+ */
++ (void)deviceNotificationReceived;
+
+/*!	\fn TJCSHA256CommonParamsWithTimeStamp:(NSString*)timeStamp
+ *	\brief Generates a SHA-256 hash value with the given time stamp.
+ *
+ * The following are sent as common parameters: appID, UDID, and timestamp.
+ *	\param timeStamp The time stamp to generate the hash with.
+ *	\return The SHA-256 hash value.
+ */
++ (NSString*)TJCSHA256CommonParamsWithTimeStamp:(NSString*)timeStamp;
+
+/*!	\fn TJCSHA256CommonParamsWithTimeStamp:tapPointsAmount:guid:(NSString* timeStamp, int points, NSString* guid)
+ *	\brief Generates a SHA-256 hash value with the time stamp and some common parameters.
+ *
+ * The following are sent as common parameters: appID, UDID, and timestamp.
+ *	\param timeStamp The time stamp to generate the hash with.
+ *	\param points The amount of tap points to award to the user.
+ *	\param guid A generated GUID for this particular URL request.
+ *	\return The SHA-256 hash value.
+ */
++ (NSString*)TJCSHA256CommonParamsWithTimeStamp:(NSString*)timeStamp tapPointsAmount:(int)points guid:(NSString*)guid;
+
+/*!	\fn TJCSHA256WithString:(NSString*)dataStr
+ *	\brief Generates a SHA-256 hash value with the given string.
+ *
+ *	\param dataStr The string from which the hash value will be generated from.
+ *	\return The SHA-256 hash value.
+ */
++ (NSString*)TJCSHA256WithString:(NSString*)dataStr;
+
+/*!	\fn generateUUID
+ *	\brief Generates a GUID.
+ *
+ *	\param n/a
+ *	\return A GUID.
+ */
++ (NSString*)generateUUID;
+
+/*!	\fn getAppID
+ *	\brief Retrieves the Tapjoy app ID.
+ *
+ *	\param n/a
+ *	\return The Tapjoy app ID passed into requestTapjoyConnect.
+ */
++ (NSString*)getAppID;
+
+/*!	\fn setUserID:(NSString*)theUserID
+ *	\brief Sets the user ID.
+ *
+ * The user ID defaults to the UDID. This is only changed when NOT using Tapjoy Managed Currency.
+ *	\param theUserID The user ID.
+ *	\return n/a
+ */
++ (void)setUserID:(NSString*)theUserID;
+
+/*!	\fn getUserID
+ *	\brief Retrieves the user ID.
+ *
+ *	\param n/a
+ *	\return The Tapjoy user ID. The user ID defaults to the UDID.
+ */
++ (NSString*)getUserID;
+
+/*!	\fn getSecretKey
+ *	\brief Retrieves the secret.
+ *
+ *	\param n/a
+ *	\return The Tapjoy secret key for this application.
+ */
++ (NSString*)getSecretKey;
+
+/*! \fn isJailBroken
  *	\brief Simple check to detect jail broken devices/apps.
  *
  * Note that this is NOT guaranteed to be accurate! There are very likely going to be ways to circumvent this check in the future.
  *	\param n/a
  *	\return YES for indicating that the device/app has been jailbroken, NO otherwise.
  */ 
-- (BOOL) isJailBroken;
+- (BOOL)isJailBroken;
 
-/*!
+/*! \fn isJailBrokenStr
  *	\brief Simple check to detect jail broken devices/apps.
  *
  * Note that this is NOT guaranteed to be accurate! There are very likely going to be ways to circumvent this check in the future.
  *	\param n/a
  *	\return A string "YES" for indicating that the device/app has been jailbroken, "NO" otherwise.
  */ 
-- (NSString*) isJailBrokenStr;
+- (NSString*)isJailBrokenStr;
 
-
-
-
-
-
-
-#pragma mark Deprecated Methods
-
-/*!	\fn requestTapjoyConnectWithAppId:(NSString*)appId
- *	\brief This method is called to initialize the TapjoyConnect system.
+/*! \fn genericParameters
+ *	\brief Retrieves the dictionary of generic parameters that are sent with every URL request.
  *
- * This method should be called upon app delegate initialization in the applicationDidFinishLaunching method.
- *	\param appId The application ID.
- *	\param password The application password.
- *	\param version The application version.
- *	\return The globally accessible #TapjoyConnect object.
- */
-+ (TapjoyConnect*) requestTapjoyConnectWithAppId:(NSString*)appId WithPassword:(NSString*)password WithVersion:(NSString*)version	__deprecated;
-
-/*!	\fn connect
- *	\brief Initiates a URL request with the application identifier data.
- *	\deprecated Updated for version 7.0.0. Do not use this method, requestTapjoyConnectWithAppId will automatically initiate a URL request.
  *	\param n/a
+ *	\return A dictionary of generic parameters, listed at the top of this file.
+ */ 
+- (NSMutableDictionary*)genericParameters;
+
+/*! \fn createQueryStringFromDict:(NSDictionary*)paramDict
+ *	\brief Takes the given dictionary and contructs a legal URL string from it.
+ *
+ *	\param n/a
+ *	\return A legal URL string constructed from the given dicionary.
+ */ 
+- (NSString*)createQueryStringFromDict:(NSDictionary*)paramDict;
+// Wrapper method.
++ (NSString*)createQueryStringFromDict:(NSDictionary*)paramDict;
+
+/*!	\fn setCurrencyMultiplier:(float)mult
+ *	\brief Sets the currency multiplier for virtual currency to be earned.
+ *
+ *	\param mult The currency multiplier.
  *	\return n/a
  */
-- (void) connect	__deprecated;
+- (void)setCurrencyMultiplier:(float)mult;
+// Wrapper method.
++ (void)setCurrencyMultiplier:(float)mult;
+
+/*!	\fn getCurrencyMultiplier
+ *	\brief Gets the currency multiplier for virtual currency to be earned.
+ *
+ *	\param n/a
+ *	\return The currency multiplier value.
+ */
+- (float)getCurrencyMultiplier;
+// Wrapper method.
++ (float)getCurrencyMultiplier;
 
 
 
-
-
-
-
-#pragma mark TapjoyConnect NSXMLParser delegate methods
-- (void) startParsing:(NSData*) myData;
-- (NSMutableDictionary*) genericParameters;
-- (NSString*) createQueryStringFromDict:(NSDictionary*) paramDict;
+// Declared here to prevent warnings.
+#pragma mark TapjoyConnect NSXMLParser Delegate Methods
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+- (void)startParsing:(NSData*) myData;
+#endif
 
 @end
+
+
+#import "TapjoyConnectConstants.h"

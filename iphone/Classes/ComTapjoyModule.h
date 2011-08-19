@@ -11,4 +11,5 @@
 {
 }
 
+@property(nonatomic,readwrite,assign) NSString* secret;
 @end
