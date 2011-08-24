@@ -2,6 +2,9 @@
 
 This module is a simple interface for connecting to [Tapjoy](http://tapjoy.com)
 
+__NOTE: This was forked in order to get the "Secret" way of working with TapJoy
+working on iPhone.  The android module has not been updated.__
+
 # Build & Install
 
 ## iPhone
@@ -19,11 +22,14 @@ Navigate into the 'android/' directory and run 'ant'. Then copy the com.tapjoy-a
 Add the following to app.js:
 
       var tapjoy = require('com.tapjoy');
+      tapjoy.setSecret('SECRET');  // Secret only supported on iphone!!
       tapjoy.connect('API_KEY');
 
 ## Android
 
 Add the following to a custom AndroidManifest.xml. Place the following XML in the first '<activity>' block in the document.
+
+NOTE: Secret version is not supported on Android in this version.
 
     <meta-data android:name="APP_ID" android:value="API_KEY"/> 
     <meta-data android:name="CLIENT_PACKAGE" android:value="com.my.app"/>
