@@ -21,7 +21,7 @@
 
 #import "TapjoyConnect.h"
 #import <CommonCrypto/CommonHMAC.h>
-
+#import <UIKit/UIDevice.h>
 
 static TapjoyConnect *sharedInstance_ = nil; //To make TapjoyConnect Singleton
 static NSString *orignalRequest = TJC_SERVICE_URL;
