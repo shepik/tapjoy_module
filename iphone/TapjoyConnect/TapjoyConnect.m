@@ -85,7 +85,7 @@ static NSString *orignalRequest = TJC_SERVICE_URL;
 	
 	if (!appID_)
 	{
-		NSLog(@"requestTapjoyConnect:secretKey: must be called before any other Tapjoy methods!");
+		//NSLog(@"requestTapjoyConnect:secretKey: must be called before any other Tapjoy methods!");
 	}
 	
 	NSString *multStr = [NSString stringWithFormat:@"%f", currencyMultiplier_];
@@ -164,7 +164,7 @@ static NSString *orignalRequest = TJC_SERVICE_URL;
 	if(!paramDict)
 	{
 #if !defined (TJC_CONNECT_SDK)
-		[TJCLog logWithLevel:LOG_DEBUG format:@"Sending Nil Getting Generic Dictionary Now"];
+		//[TJCLog logWithLevel:LOG_DEBUG format:@"Sending Nil Getting Generic Dictionary Now"];
 #endif
 		paramDict = [[TapjoyConnect sharedTapjoyConnect] genericParameters];
 	}
