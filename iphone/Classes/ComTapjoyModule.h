@@ -12,4 +12,10 @@
 }
 
 @property(nonatomic,readwrite,assign) NSString* secret;
+
+/*
+ * Note when an action was completed within the app.
+ */
+- (void)actionComplete:(NSString*)actionID;
+
 @end

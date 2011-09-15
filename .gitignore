@@ -1,2 +1,4 @@
 iphone/com.tapjoy-iphone-*
 android/dist/com.tapjoy-android-*
+.DS_Store
+iphone/modules*

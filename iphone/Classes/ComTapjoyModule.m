@@ -34,7 +34,7 @@
 	// you *must* call the superclass
 	[super startup];
 	
-	NSLog(@"[INFO] %@ module loaded",[self moduleId]);
+	//NSLog(@"[INFO] %@ module loaded",[self moduleId]);
 }
 
 -(void)shutdown:(id)sender
@@ -97,8 +97,22 @@
 	}
 	@catch (NSException * e) 
 	{
-		NSLog(@"[WARN] Attempted to connect to Tapjoy, encountered error: %@",e);
+		//NSLog(@"[WARN] Attempted to connect to Tapjoy, encountered error: %@",e);
 	}
+}
+
+- (void)actionComplete:(NSString*)actionID
+{
+  ENSURE_UI_THREAD_1_ARG(actionID)
+  ENSURE_SINGLE_ARG(actionID,NSString);
+  @try 
+  {
+    [TapjoyConnect actionComplete:actionID];
+  }
+  @catch (NSException * e) 
+  {
+    //NSLog(@"[WARN] Attempted to connect to Tapjoy, encountered error: %@",e);
+  }
 }
 
 @end
