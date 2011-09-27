@@ -25,6 +25,11 @@ Add the following to app.js:
       tapjoy.setSecret('SECRET');  // Secret only supported on iphone!!
       tapjoy.connect('API_KEY');
 
+And later on, to mark an action performed:
+
+      // Action complete... see TapJoy for your action id
+      tapjoy.actionComplete('00000000-0000-0000-0000-000000000000');
+
 ## Android
 
 Add the following to a custom AndroidManifest.xml. Place the following XML in the first '<activity>' block in the document.
