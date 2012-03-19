@@ -26,6 +26,7 @@
 		24DD6CFA1134B3F500162E58 /* ComTapjoyModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComTapjoyModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComTapjoyModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComTapjoyModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComTapjoyModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComTapjoyModuleAssets.m */; };
+		73F864F61517CF8600799471 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F864F51517CF8600799471 /* CoreTelephony.framework */; };
 		95F32AA012C3F96600D3375D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F32A9F12C3F96600D3375D /* UIKit.framework */; };
 		95F32BA412C4199700D3375D /* TapjoyConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 95F32BA212C4199700D3375D /* TapjoyConnect.h */; };
 		95F32BA512C4199700D3375D /* TapjoyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F32BA312C4199700D3375D /* TapjoyConnect.m */; };
@@ -49,6 +50,7 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* ComTapjoyModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComTapjoyModuleAssets.h; path = Classes/ComTapjoyModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* ComTapjoyModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComTapjoyModuleAssets.m; path = Classes/ComTapjoyModuleAssets.m; sourceTree = "<group>"; };
+		73F864F51517CF8600799471 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		95F32A9F12C3F96600D3375D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		95F32BA212C4199700D3375D /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
 		95F32BA312C4199700D3375D /* TapjoyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapjoyConnect.m; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				95F32AA012C3F96600D3375D /* UIKit.framework in Frameworks */,
+				73F864F61517CF8600799471 /* CoreTelephony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +98,7 @@
 			children = (
 				95F32A9F12C3F96600D3375D /* UIKit.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				73F864F51517CF8600799471 /* CoreTelephony.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
