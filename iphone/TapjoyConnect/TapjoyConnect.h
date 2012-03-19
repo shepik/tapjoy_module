@@ -1,22 +1,10 @@
-//Copyright (C) 2011 by Tapjoy Inc.
+// Copyright (C) 2011-2012 by Tapjoy Inc.
 //
-//Permission is hereby granted, free of charge, to any person obtaining a copy
-//of this software and associated documentation files (the "Software"), to deal
-//in the Software without restriction, including without limitation the rights
-//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//copies of the Software, and to permit persons to whom the Software is
-//furnished to do so, subject to the following conditions:
+// This file is part of the Tapjoy SDK.
 //
-//The above copyright notice and this permission notice shall be included in
-//all copies or substantial portions of the Software.
+// By using the Tapjoy SDK in your software, you agree to the terms of the Tapjoy SDK License Agreement.
 //
-//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//THE SOFTWARE.
+// The Tapjoy SDK is bound by the Tapjoy SDK License Agreement and can be found here: https://www.tapjoy.com/sdk/license
 
 
 /*! \mainpage Tapjoy iOS SDK
@@ -26,11 +14,10 @@
 
 
 #import <Foundation/Foundation.h>
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
-#import <CoreTelephony/CTTelephonyNetworkInfo.h>
-#import <CoreTelephony/CTCarrier.h>
-#endif
+#import <UIKit/UIkit.h>
 
+
+#define TJC_LIBRARY_VERSION_NUMBER			@"8.1.7"					/*!< The SDK version number. */
 
 #define TJC_SERVICE_URL							@"https://ws.tapjoyads.com/"
 #define TJC_SERVICE_URL_ALTERNATE			@"https://ws1.tapjoyads.com/"
@@ -38,7 +25,8 @@
 #define TJC_TAPJOY_ALT_HOST_NAME				@"ws1.tapjoyads.com"
 #define TJC_LINKSHARE_HOST_NAME				@"click.linksynergy.com"
 
-#define TJC_UDID									@"udid"					/*!< The unique device identifier. */
+#define TJC_UDID									@"udid"					/*!< The unique device identifier. Deprecated in iOS 5. */
+#define TJC_UNIQUE_MAC_ID						@"mac_address"			/*!< The unique ID retrieved by taking the hash of mac address. */
 #define TJC_DEVICE_NAME							@"device_name"			/*!< This is the specific device name ("iPhone1,1", "iPod1,1"...) */
 #define TJC_DEVICE_TYPE_NAME					@"device_type"			/*!< The model name of the device. This is less descriptive than the device name. */
 #define TJC_DEVICE_OS_VERSION_NAME			@"os_version"			/*!< The device system version. */
@@ -48,7 +36,6 @@
 #define TJC_APP_ID_NAME							@"app_id"				/*!< The application id is set by the developer, and is a unique id provided by Tapjoy. */
 #define TJC_APP_VERSION_NAME					@"app_version"			/*!< The application version is retrieved from the application plist file, from the bundle version. */
 #define TJC_CONNECT_LIBRARY_VERSION_NAME	@"library_version"	/*!< The library version is the SDK version number. */	
-#define TJC_LIBRARY_VERSION_NUMBER			@"8.0.3"					/*!< The SDK version number. */
 #define TJC_VERIFIER								@"verifier"				/*!< A hashed value that is verified on the server to confirm a valid connect. */
 #define TJC_TIMESTAMP							@"timestamp"			/*!< The time in seconds when a connect call is made. */
 #define TJC_GUID									@"guid"					/*!< Used as part of the verifier. */
@@ -59,8 +46,11 @@
 #define TJC_MOBILE_NETWORK_CODE				@"mobile_network_code"	/*!< The mobile network code (MNC) for the user’s cellular service provider. */
 #define TJC_PLATFORM								@"platform"				/*!< The name of the platform. */
 #define TJC_PLATFORM_IOS						@"iOS"
+// The user ID.
+#define TJC_URL_PARAM_USER_ID					@"publisher_user_id"
 // NOTE: This doesn't actually affect currency earned, just the value displayed on the offer wall.
 #define TJC_URL_PARAM_CURRENCY_MULTIPLIER	@"display_multiplier"	/*!< Currency multiplier value. */
+#define TJC_CONNECTION_TYPE_NAME				@"connection_type"	/*!< The type of data connection that is being used. */
 
 
 #define TJC_CONNECT_API							@"connect"						/*!< API for Tapjoy connect. */
@@ -81,11 +71,13 @@
 	NSString *secretKey_;				/*!< The Tapjoy secret key for this applicaiton. */
 	NSString *userID_;					/*!< The user ID, used to display ads. This is the UDID by default. */
 	float currencyMultiplier_;			/*!< The currency multiplier value, used to adjust currency earned. */
-	NSData *data_;							/*!< Holds data for any data that comes back from a URL request. */
-	NSURLConnection *connection_;		/*!< Used to provide support to perform the loading of a URL request. Delegate methods are defined to handle when a response is recieve with associated data. This is used for asynchronous requests only. */
-	NSString *currentXMLElement_;		/*!< Contains @"Success when a connection is successfully made, nil otherwise. */
+	NSMutableData *data_;				/*!< Holds data for any data that comes back from a URL request. */
+	NSURLConnection *connection_;		/*!< Used to provide support to perform the loading of a URL request. Delegate methods are defined to handle when a response is receive with associated data. This is used for asynchronous requests only. */
 	int connectAttempts_;				/*!< The connect attempts is used to determine whether the alternate URL will be used. */
 	BOOL isInitialConnect_;				/*!< Used to keep track of an initial connect call to prevent multiple repeated calls. */
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+	NSString *currentXMLElement_;		/*!< Contains @"Success when a connection is successfully made, nil otherwise. */
+#endif
 }
 
 @property (nonatomic,copy) NSString* appID;
@@ -156,14 +148,6 @@
  *	\return The SHA-256 hash value.
  */
 + (NSString*)TJCSHA256WithString:(NSString*)dataStr;
-
-/*!	\fn generateUUID
- *	\brief Generates a GUID.
- *
- *	\param n/a
- *	\return A GUID.
- */
-+ (NSString*)generateUUID;
 
 /*!	\fn getAppID
  *	\brief Retrieves the Tapjoy app ID.
@@ -255,12 +239,15 @@
 + (float)getCurrencyMultiplier;
 
 
-
 // Declared here to prevent warnings.
 #pragma mark TapjoyConnect NSXMLParser Delegate Methods
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
 - (void)startParsing:(NSData*) myData;
 #endif
+
+
++ (NSString*)getMACAddress;
++ (NSString*)getUniqueIdentifier;
 
 @end
 

@@ -5,6 +5,9 @@ This module is a simple interface for connecting to [Tapjoy](http://tapjoy.com)
 __NOTE: This was forked in order to get the "Secret" way of working with TapJoy
 working on iPhone.  The android module has not been updated.__
 
+Updated to work with v8.1.7 of the TapjoyConnect libraries (to meet their March
+deadline for library compatibility)
+
 # Build & Install
 
 ## iPhone
