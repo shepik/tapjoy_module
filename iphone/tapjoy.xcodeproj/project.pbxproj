@@ -26,6 +26,8 @@
 		24DD6CFA1134B3F500162E58 /* ComTapjoyModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComTapjoyModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComTapjoyModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComTapjoyModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComTapjoyModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComTapjoyModuleAssets.m */; };
+		7330C6251558539C00D1E786 /* TapjoyConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 73798C0E15584A4F00227C39 /* TapjoyConnect.h */; };
+		7330C6261558539C00D1E786 /* TapjoyConnect.m in Headers */ = {isa = PBXBuildFile; fileRef = 73798C0F15584A4F00227C39 /* TapjoyConnect.m */; };
 		73798C1215584A6C00227C39 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = 73798C0C15584A4F00227C39 /* OpenUDID.h */; };
 		73F864F61517CF8600799471 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F864F51517CF8600799471 /* CoreTelephony.framework */; };
 		95F32AA012C3F96600D3375D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F32A9F12C3F96600D3375D /* UIKit.framework */; };
@@ -162,10 +164,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7330C6251558539C00D1E786 /* TapjoyConnect.h in Headers */,
+				7330C6261558539C00D1E786 /* TapjoyConnect.m in Headers */,
 				AA747D9F0F9514B9006C5449 /* ComTapjoy_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComTapjoyModule.h in Headers */,
-				24DE9E1111C5FE74003F90F6 /* ComTapjoyModuleAssets.h in Headers */,
 				73798C1215584A6C00227C39 /* OpenUDID.h in Headers */,
+				24DE9E1111C5FE74003F90F6 /* ComTapjoyModuleAssets.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
