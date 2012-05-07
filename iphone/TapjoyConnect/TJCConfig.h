@@ -6,9 +6,6 @@
 //
 // The Tapjoy SDK is bound by the Tapjoy SDK License Agreement and can be found here: https://www.tapjoy.com/sdk/license
 
-
-
-#define TJC_CONNECT_SUCCESS				@"TJC_Connect_Success"
-#define TJC_CONNECT_FAILED					@"TJC_Connect_Failed"
-#define TJC_CONNECT_SDK
-#define TJC_SDK_TYPE_VALUE					@"connect"
+// By Default, this value is 'false' and the 'UIDevice uniqueIdentifier' method will not be compiled into your app binary.
+// Setting this value to 'true' will ensure more accurate tracking for your users through Tapjoy's network.
+#define TJC_UDID_OPT_IN	(false)

@@ -26,10 +26,9 @@
 		24DD6CFA1134B3F500162E58 /* ComTapjoyModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComTapjoyModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComTapjoyModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComTapjoyModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComTapjoyModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComTapjoyModuleAssets.m */; };
+		73798C1215584A6C00227C39 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = 73798C0C15584A4F00227C39 /* OpenUDID.h */; };
 		73F864F61517CF8600799471 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F864F51517CF8600799471 /* CoreTelephony.framework */; };
 		95F32AA012C3F96600D3375D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F32A9F12C3F96600D3375D /* UIKit.framework */; };
-		95F32BA412C4199700D3375D /* TapjoyConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 95F32BA212C4199700D3375D /* TapjoyConnect.h */; };
-		95F32BA512C4199700D3375D /* TapjoyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F32BA312C4199700D3375D /* TapjoyConnect.m */; };
 		AA747D9F0F9514B9006C5449 /* ComTapjoy_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComTapjoy_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -50,10 +49,14 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* ComTapjoyModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComTapjoyModuleAssets.h; path = Classes/ComTapjoyModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* ComTapjoyModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComTapjoyModuleAssets.m; path = Classes/ComTapjoyModuleAssets.m; sourceTree = "<group>"; };
+		73798C0C15584A4F00227C39 /* OpenUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		73798C0D15584A4F00227C39 /* OpenUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		73798C0E15584A4F00227C39 /* TapjoyConnect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
+		73798C0F15584A4F00227C39 /* TapjoyConnect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TapjoyConnect.m; sourceTree = "<group>"; };
+		73798C1015584A4F00227C39 /* TapjoyConnectConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapjoyConnectConstants.h; sourceTree = "<group>"; };
+		73798C1115584A4F00227C39 /* TJCConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJCConfig.h; sourceTree = "<group>"; };
 		73F864F51517CF8600799471 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		95F32A9F12C3F96600D3375D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		95F32BA212C4199700D3375D /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
-		95F32BA312C4199700D3375D /* TapjoyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapjoyConnect.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ComTapjoy_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComTapjoy_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComTapjoy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComTapjoy.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +87,7 @@
 		0867D691FE84028FC02AAC07 /* tapjoy */ = {
 			isa = PBXGroup;
 			children = (
-				95F32BA112C4199700D3375D /* TapjoyConnect */,
+				73798C0915584A4F00227C39 /* TapjoyConnect */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -123,13 +126,33 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		95F32BA112C4199700D3375D /* TapjoyConnect */ = {
+		73798C0915584A4F00227C39 /* TapjoyConnect */ = {
 			isa = PBXGroup;
 			children = (
-				95F32BA212C4199700D3375D /* TapjoyConnect.h */,
-				95F32BA312C4199700D3375D /* TapjoyConnect.m */,
+				73798C0A15584A4F00227C39 /* Components */,
+				73798C0E15584A4F00227C39 /* TapjoyConnect.h */,
+				73798C0F15584A4F00227C39 /* TapjoyConnect.m */,
+				73798C1015584A4F00227C39 /* TapjoyConnectConstants.h */,
+				73798C1115584A4F00227C39 /* TJCConfig.h */,
 			);
 			path = TapjoyConnect;
+			sourceTree = "<group>";
+		};
+		73798C0A15584A4F00227C39 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				73798C0B15584A4F00227C39 /* TJCExtensions */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		73798C0B15584A4F00227C39 /* TJCExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				73798C0C15584A4F00227C39 /* OpenUDID.h */,
+				73798C0D15584A4F00227C39 /* OpenUDID.m */,
+			);
+			path = TJCExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +165,7 @@
 				AA747D9F0F9514B9006C5449 /* ComTapjoy_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComTapjoyModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* ComTapjoyModuleAssets.h in Headers */,
-				95F32BA412C4199700D3375D /* TapjoyConnect.h in Headers */,
+				73798C1215584A6C00227C39 /* OpenUDID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +238,6 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* ComTapjoyModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* ComTapjoyModuleAssets.m in Sources */,
-				95F32BA512C4199700D3375D /* TapjoyConnect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
