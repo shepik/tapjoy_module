@@ -14,4 +14,4 @@ name: tapjoy
 moduleid: com.tapjoy
 guid: 62b282dd-7190-4d1c-b731-2f4b31847f81
 platform: iphone
-minsdk: 1.5.1
+minsdk: 2.0.1.GA2
