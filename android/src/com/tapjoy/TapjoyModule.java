@@ -12,7 +12,7 @@ import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.KrollInvocation;
 import org.appcelerator.kroll.annotations.Kroll;
 
-import org.appcelerator.titanium.TiContext;
+import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConfig;
 
@@ -27,19 +27,18 @@ public class TapjoyModule extends KrollModule
 	// You can define constants with @Kroll.constant, for example:
 	// @Kroll.constant public static final String EXTERNAL_NAME = value;
 	
-	public TapjoyModule(TiContext tiContext) {
-		super(tiContext);
+	public TapjoyModule() {
 	}
 
 	// Methods
 	@Kroll.method
-	public void connectCreate(KrollInvocation invocation) {
-		TapjoyConnect.getTapjoyConnectInstance(invocation.getTiContext().getActivity().getApplicationContext());
+	public void connectCreate() {
+		TapjoyConnect.getTapjoyConnectInstance(TiApplication.getInstance().getApplicationContext());
 	}
 
 	@Kroll.method
-	public void connectDestroy(KrollInvocation invocation) {
-		TapjoyConnect.getTapjoyConnectInstance(invocation.getTiContext().getActivity().getApplicationContext()).finalize();
+	public void connectDestroy() {
+		TapjoyConnect.getTapjoyConnectInstance(TiApplication.getInstance().getApplicationContext()).finalize();
 	}
 	
 }
